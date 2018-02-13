@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post">
+    <table>
+          {% csrf_token %}
+         <tr>
+            <td>
+                Customer Id
+            </td>
+            <td>
+                   <input type="text" name="txtid"  id="txtid" value="{{ edit_data.id }}">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Customer Name
+            </td>
+            <td>
+                   <input type="text" name="txtName"  id="txtName" value="{{ edit_data.Customer_name }}">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Customer Price
+            </td>
+            <td>
+                   <input type="text" name="txtPrice"  id="txtPrice" value="{{ edit_data.Price}}">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Amount
+            </td>
+            <td>
+                   <input type="text" name="txtAmount"  id="txtAmount" value="{{ edit_data.Amount }}">
+            </td>
+        </tr>
+                <td>
+                <input type="submit" name="txtSubmit" value="Insert" id="txtSubmit">
+                     <input type="submit" name="txtUpdate" value="Update" id="txtUpdate">
+                </td>
+            </tr>
+        </tr>
+    </table>
+</form>
+
+<table>
+    <tr>
+    <th>Customer Id</th>
+        <th>Customer Name</th>
+    <th>Customer Price</th>
+     <th>Amount</th>
+        <th>Delete</th>
+         <th>Edit</th>
+    </tr>
+    {% for c in data %}
+    <tr>
+        <td>{{c.id}}</td>
+        <td>{{c.Customer_name}}</td>
+        <td>{{c.Price}}</td>
+         <td>{{c.Amount}}</td>
+         <td><a href="../delete/{{c.id}}">Delete</a> </td>
+          <td><a href="../edit/{{c.id}}">Edit</a> </td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
